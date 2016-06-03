@@ -1,42 +1,13 @@
 # Create
 CREATE TABLE service(
-  UserAccount VARCHAR(50) NOT NULL,
-  CarLicense VARCHAR(20) NOT NULL,
-  ParkID VARCHAR(255) NOT NULL,
-  SpaceID VARCHAR(255) NOT NULL,
-  StartTime TIMESTAMP NOT NULL,
-  ExitTime TIMESTAMP NOT NULL,
-  TotalMoney DOUBLE NOT NULL,
+  user_account VARCHAR(50) NOT NULL,
+  car_license VARCHAR(20) NOT NULL,
+  park_id VARCHAR(255) NOT NULL,
+  space_id VARCHAR(255) NOT NULL,
+  start_time TIMESTAMP NOT NULL,
+  exit_time TIMESTAMP NOT NULL,
+  total_money DOUBLE NOT NULL,
 
-  PRIMARY KEY(UserAccount, CarLicense)
+  PRIMARY KEY(user_account, car_license)
 ) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-# Insert
-INSERT
-INTO
-  `parks`(
-    `ParkID`,
-    `ParkName`,
-    `ParkPwd`,
-    `ParkNumOfStorey`,
-    `NumOfEmptyParking`,
-    `Longitude`,
-    `Latitude`,
-    `ParkIP`,
-    `Money`,
-    `UnitPrice`,
-    `BookUintPrice`
-  )
-VALUES(
-  '1',
-  'a',
-  'a',
-  '100',
-  '20',
-  '120.1',
-  '30.1',
-  '20.199.1.2',
-  NULL,
-  '2',
-  '1'
-)

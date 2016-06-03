@@ -1,16 +1,16 @@
 # Create
 CREATE TABLE parks(
-  ParkID VARCHAR(255) NOT NULL,
-  ParkName VARCHAR(255) NOT NULL,
-  ParkPwd VARCHAR(225) NOT NULL,
-  ParkNumOfStorey INT NOT NULL,
-  NumOfEmptyParking INT NOT NULL,
-  Longitude DOUBLE NOT NULL,
-  Latitude DOUBLE NOT NULL,
-  ParkIP VARCHAR(20) NOT NULL,
-  Money DOUBLE,
-  UnitPrice DOUBLE NOT NULL,
-  BookUintPrice DOUBLE NOT NULL,
+  park_id VARCHAR(255) NOT NULL,
+  park_name VARCHAR(255) NOT NULL,
+  park_name VARCHAR(225) NOT NULL,
+  park_num_of_storey INT NOT NULL,
+  num_of_empty_parking INT NOT NULL,
+  longitude DOUBLE NOT NULL,
+  latitude DOUBLE NOT NULL,
+  park_ip VARCHAR(20) NOT NULL,
+  money DOUBLE,
+  unit_price DOUBLE NOT NULL,
+  book_uint_price DOUBLE NOT NULL,
 
-  PRIMARY KEY(ParkID)
+  PRIMARY KEY(park_id)
 ) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;

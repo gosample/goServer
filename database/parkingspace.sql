@@ -1,24 +1,24 @@
 # Create
 CREATE TABLE parkingspace(
-  SpaceID VARCHAR(32) NOT NULL,
-  ParkID VARCHAR(255) NOT NULL,
-  State INT NOT NULL,
-  Floor INT NOT NULL,
-  UserAccount VARCHAR(50) NOT NULL,
-  AssignTime TIMESTAMP,
+  space_id VARCHAR(32) NOT NULL,
+  park_id VARCHAR(255) NOT NULL,
+  state INT NOT NULL,
+  floor INT NOT NULL,
+  user_account VARCHAR(50) NOT NULL,
+  assign_time TIMESTAMP,
 
-  PRIMARY KEY(SpaceID, ParkID)
+  PRIMARY KEY(space_id, park_id)
 ) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 # Insert
 INSERT
 INTO
   `parkingspace`(
-    `SpaceID`,
-    `ParkID`,
-    `State`,
-    `Floor`,
-    `UserAccount`,
-    `AssignTime`
+    `space_id`,
+    `park_id`,
+    `state`,
+    `floor`,
+    `user_account`,
+    `assign_time`
   )
 VALUES('1', '1', '0', '1', 'Linus', CURRENT_TIMESTAMP);

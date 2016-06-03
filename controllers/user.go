@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"parkinglots/models"
 
 	"github.com/astaxie/beego"
@@ -21,11 +22,14 @@ type UserController struct {
 func (u *UserController) Register() {
 	// TODO: replace `type struct` with model.User in the future.
 	type Message struct {
-		UserAccount, UserPwd, PhoneNum, CarLicense string
+		UserAccount, UserPwd, CarLicense string
 	}
 	var m Message
 	json.Unmarshal(u.Ctx.Input.RequestBody, &m)
-	e := models.AddUser(models.User{UserAcount: m.UserAccount, UserPwd: m.UserPwd, PhoneNum: m.UserPwd})
+
+	fmt.Println(m)
+
+	e := models.AddUser(models.User{UserAcount: m.UserAccount, UserPwd: m.UserPwd})
 	if e != nil {
 		u.Data["json"] = &models.RegisterResult{Result: 1, Err: e.Error()}
 	} else {
@@ -42,10 +46,11 @@ func (u *UserController) Register() {
 func (u *UserController) Login() {
 	// TODO: replace `type struct` with model.User in the future.
 	type Message struct {
-		UserAccount, UserPwd, PhoneNum, CarLicense string
+		UserAccount, UserPwd, CarLicense string
 	}
 	var m Message
 	json.Unmarshal(u.Ctx.Input.RequestBody, &m)
+
 	token, e := models.UpdateUserToken(models.User{UserAcount: m.UserAccount, UserPwd: m.UserPwd})
 	if e != nil {
 		u.Data["json"] = &models.LoginResult{Result: 1, Err: e.Error()}

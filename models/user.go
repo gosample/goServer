@@ -20,13 +20,12 @@ func init() {
 type User struct {
 	UserAcount string
 	UserPwd    string
-	PhoneNum   string
 	Money      float64
 	Token      string
 }
 
 func AddUser(u User) error {
-	_, e := o.Raw("INSERT INTO users (user_account, user_pwd, phone_num) VALUES (?, ?, ?);", u.UserAcount, u.UserPwd, u.PhoneNum).Exec()
+	_, e := o.Raw("INSERT INTO users (user_account, user_pwd) VALUES (?, ?);", u.UserAcount, u.UserPwd).Exec()
 	if e != nil {
 		return e
 	}
@@ -46,7 +45,7 @@ func UpdateUserToken(u User) (string, error) {
 
 	// TODO: add to token cache
 	token := strconv.Itoa(int(rand.Int63())) + u.UserAcount
-	_, e = o.Raw("UPDATE `users` SET `Token`= ? WHERE `user_account`= ?;", token, u.UserAcount).Exec()
+	_, e = o.Raw("UPDATE `users` SET `token`= ? WHERE `user_account`= ?;", token, u.UserAcount).Exec()
 	if e != nil {
 		return "", e
 	}
