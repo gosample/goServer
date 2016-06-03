@@ -20,13 +20,12 @@ func init() {
 type User struct {
 	UserAcount string
 	UserPwd    string
-	PhoneNum   string
 	Money      float64
 	Token      string
 }
 
 func AddUser(u User) error {
-	_, e := o.Raw("INSERT INTO users (user_account, user_pwd, phone_num) VALUES (?, ?, ?);", u.UserAcount, u.UserPwd, u.PhoneNum).Exec()
+	_, e := o.Raw("INSERT INTO users (user_account, user_pwd) VALUES (?, ?);", u.UserAcount, u.UserPwd).Exec()
 	if e != nil {
 		return e
 	}

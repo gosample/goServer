@@ -3,7 +3,7 @@ package controllers
 import (
 	"encoding/json"
 	"parkinglots/models"
-
+	"fmt"
 	"github.com/astaxie/beego"
 )
 
@@ -21,11 +21,18 @@ type UserController struct {
 func (u *UserController) Register() {
 	// TODO: replace `type struct` with model.User in the future.
 	type Message struct {
-		UserAccount, UserPwd, PhoneNum, CarLicense string
+		UserAccount, UserPwd, CarLicense string
 	}
 	var m Message
 	json.Unmarshal(u.Ctx.Input.RequestBody, &m)
-	e := models.AddUser(models.User{UserAcount: m.UserAccount, UserPwd: m.UserPwd, PhoneNum: m.UserPwd})
+
+	fmt.Println(u.Ctx.Input.RequestBody)
+
+
+	
+
+	fmt.Println(m)
+	e := models.AddUser(models.User{UserAcount: m.UserAccount, UserPwd: m.UserPwd})
 	if e != nil {
 		u.Data["json"] = &models.RegisterResult{Result: 1, Err: e.Error()}
 	} else {
@@ -42,7 +49,7 @@ func (u *UserController) Register() {
 func (u *UserController) Login() {
 	// TODO: replace `type struct` with model.User in the future.
 	type Message struct {
-		UserAccount, UserPwd, PhoneNum, CarLicense string
+		UserAccount, UserPwd, CarLicense string
 	}
 	var m Message
 	json.Unmarshal(u.Ctx.Input.RequestBody, &m)

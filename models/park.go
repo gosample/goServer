@@ -29,12 +29,14 @@ type Result struct {
 	ParkId    string
 	Longitude float64
 	Latitude  float64
+	Storey		int
+	Empty			int
 }
 
 func QueryParks(parkName string) ([]Result, error) {
 	var results []Result
 	fmt.Println(parkName)
-	num, e := o.Raw("SELECT `park_name`,`park_id`,`longitude`,`latitude` FROM `parks` WHERE `park_name` LIKE ?", "%"+parkName+"%").QueryRows(&results)
+	num, e := o.Raw("SELECT `park_name`,`park_id`,`longitude`,`latitude`,`park_num_of_storey`,`num_of_empty_parking` FROM `parks` WHERE `park_name` LIKE ?", "%"+parkName+"%").QueryRows(&results)
 	fmt.Println(results)
 	fmt.Println(num, e)
 	if e != nil {
