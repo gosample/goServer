@@ -16,11 +16,11 @@ type ParkController struct {
 // @Description search parkinglots by parkName
 // @Success 200 {object} model.SearchResult
 // @Failure 403 parkionglots not found
-// @router /search/name [get]
+// @router /search [get]
 func (p *ParkController) SearchParkingLots() {
 	var n string
 	n = p.GetString("ParkName")
-	fmt.Println(n)
+	fmt.Println("parkname is "+n)
 	var results []models.Result
 	results, e := models.QueryParks(n)
 	if e != nil {

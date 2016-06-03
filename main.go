@@ -10,6 +10,7 @@ import (
 	"github.com/astaxie/beego"
 )
 
+
 var (
 	user = flag.String("user", "root", "MySQL username")
 	pwd  = flag.String("pwd", "", "MySQL password")
