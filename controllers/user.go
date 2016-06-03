@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"parkinglots/models"
 
 	"github.com/astaxie/beego"
@@ -25,6 +26,8 @@ func (u *UserController) Register() {
 	}
 	var m Message
 	json.Unmarshal(u.Ctx.Input.RequestBody, &m)
+
+	fmt.Println(m)
 
 	e := models.AddUser(models.User{UserAcount: m.UserAccount, UserPwd: m.UserPwd})
 	if e != nil {

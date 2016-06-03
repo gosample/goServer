@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"parkinglots/models"
 
 	"github.com/astaxie/beego"
@@ -20,7 +19,6 @@ type ParkController struct {
 func (p *ParkController) SearchParkingLots() {
 	var n string
 	n = p.GetString("ParkName")
-	fmt.Println("parkname is "+n)
 	var results []models.Result
 	results, e := models.QueryParks(n)
 	if e != nil {
