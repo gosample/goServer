@@ -19,6 +19,20 @@ type UserController struct {
 // @Success 200 {object} models.RegisterResult
 // @Failure 403 body is empty
 // @router /register [post]
+
+// Method: POST
+// Body:
+// {
+//     "UserName": "18368493683",
+//     "UserPwd": "12345678",
+//     "CarLicense": "浙A12345"
+// }
+//
+// Return:
+// {
+//     "Result": 0,
+//     "Err": "ok"
+// }
 func (u *UserController) Register() {
 	// TODO: replace `type struct` with model.User in the future.
 	type Message struct {
@@ -43,6 +57,20 @@ func (u *UserController) Register() {
 // @Success 200 {object} model.LoginResult
 // @Failure 403 user not exist
 // @router /login [post]
+
+// Method: POST
+// Body:
+// {
+//     "UserName": "18368493683",
+//     "UserPwd": "12345678"
+// }
+//
+// Return:
+// {
+//     "Result": 0,
+//     "Err": "ok"
+// }
+
 func (u *UserController) Login() {
 	// TODO: replace `type struct` with model.User in the future.
 	type Message struct {
