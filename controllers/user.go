@@ -13,13 +13,6 @@ type UserController struct {
 	beego.Controller
 }
 
-// @Title createUser
-// @Description create users
-// @Param	body		body 	models.User	true		"body for user content"
-// @Success 200 {object} models.RegisterResult
-// @Failure 403 body is empty
-// @router /register [post]
-
 // Method: POST
 // Body:
 // {
@@ -33,6 +26,13 @@ type UserController struct {
 //     "Result": 0,
 //     "Err": "ok"
 // }
+
+// @Title createUser
+// @Description create users
+// @Param	body		body 	models.User	true		"body for user content"
+// @Success 200 {object} models.RegisterResult
+// @Failure 403 body is empty
+// @router /register [post]
 func (u *UserController) Register() {
 	// TODO: replace `type struct` with model.User in the future.
 	type Message struct {
@@ -52,12 +52,6 @@ func (u *UserController) Register() {
 	u.ServeJSON()
 }
 
-// @Title login
-// @Description Logs user into the system
-// @Success 200 {object} model.LoginResult
-// @Failure 403 user not exist
-// @router /login [post]
-
 // Method: POST
 // Body:
 // {
@@ -71,6 +65,11 @@ func (u *UserController) Register() {
 //     "Err": "ok"
 // }
 
+// @Title login
+// @Description Logs user into the system
+// @Success 200 {object} model.LoginResult
+// @Failure 403 user not exist
+// @router /login [post]
 func (u *UserController) Login() {
 	// TODO: replace `type struct` with model.User in the future.
 	type Message struct {

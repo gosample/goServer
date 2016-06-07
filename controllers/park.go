@@ -11,12 +11,6 @@ type ParkController struct {
 	beego.Controller
 }
 
-// @Title search by name
-// @Description search parkinglots by parkName
-// @Success 200 {object} model.SearchResult
-// @Failure 403 parkionglots not found
-// @router /search [get]
-
 // Method : GET
 //
 // Return :
@@ -47,6 +41,11 @@ type ParkController struct {
 // Result : 1. ok
 //          0. error
 
+// @Title search by name
+// @Description search parkinglots by parkName
+// @Success 200 {object} model.SearchResult
+// @Failure 403 parkionglots not found
+// @router /search [get]
 func (p *ParkController) SearchParkingLots() {
 	var n string
 	n = p.GetString("ParkName")
