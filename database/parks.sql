@@ -2,7 +2,7 @@
 CREATE TABLE parks(
   park_id VARCHAR(255) NOT NULL,
   park_name VARCHAR(255) NOT NULL,
-  park_name VARCHAR(225) NOT NULL,
+  park_pwd VARCHAR(225) NOT NULL,
   park_num_of_storey INT NOT NULL,
   num_of_empty_parking INT NOT NULL,
   longitude DOUBLE NOT NULL,
