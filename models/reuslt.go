@@ -16,3 +16,8 @@ type SearchResult struct {
 	Err    string
 	Parks  []Result
 }
+type NearByResult struct {
+	Result int
+	Err    string
+	Parks  []Result
+}

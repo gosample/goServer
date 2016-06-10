@@ -48,6 +48,13 @@ func init() {
 			[]string{"get"},
 			nil})
 
+	beego.GlobalControllerRouter["parkinglots/controllers:ParkController"] = append(beego.GlobalControllerRouter["parkinglots/controllers:ParkController"],
+		beego.ControllerComments{
+			"NearByParkingLots",
+			`/nearby`,
+			[]string{"post"},
+			nil})
+
 	beego.GlobalControllerRouter["parkinglots/controllers:UserController"] = append(beego.GlobalControllerRouter["parkinglots/controllers:UserController"],
 		beego.ControllerComments{
 			"Register",

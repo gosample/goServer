@@ -45,3 +45,16 @@ func QueryParks(parkName string) ([]Result, error) {
 	}
 	return results, nil
 }
+
+func NearByParks(longitude, latitude float64) ([]Result, error) {
+	var results []Result
+	fmt.Println(longitude)
+	fmt.Println(latitude)
+	num, e := o.Raw("SELECT `parking`.parks.park_name FROM `parking`.parks WHERE 0.02 >= ST_LENGTH(ST_LINESTRINGFROMWKB(LineString(`parking`.parks.park_pt, point(?,?))));", longitude, latitude).QueryRows(&results)
+	fmt.Println(results)
+	fmt.Println(num, e)
+	if e != nil {
+		return nil, e
+	}
+	return results, nil
+}
