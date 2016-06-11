@@ -14,11 +14,6 @@ type ParkController struct {
 }
 
 // Method : GET
-// Body:
-// {
-//     "Longitude": 121.571636,
-//     "Latitude": 29.816461
-// }
 //
 // Return :
 // {
@@ -68,6 +63,11 @@ func (p *ParkController) SearchParkingLots() {
 
 // Method : POST
 //
+// Body:
+// {
+//     "Longitude": 121.571636,
+//     "Latitude": 29.816461
+// }
 // Return :
 // {
 //   "Result": 1,
