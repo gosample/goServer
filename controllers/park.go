@@ -17,28 +17,37 @@ type ParkController struct {
 //
 // Return :
 // {
-//   "Result": 1,
-//   "Err": "ok",
-//   "Parks": [
-//     {
-//       "ParkName": "abcdd",
-//       "ParkId": "4",
-//       "Longitude": 100.01,
-//       "Latitude": 99.91,
-//       "Storey": 0,
-//       "Empty": 0,
-//       "Money": 5
-//     },
-//     {
-//       "ParkName": "abcddded",
-//       "ParkId": "5",
-//       "Longitude": 100.01,
-//       "Latitude": 99.91,
-//       "Storey": 0,
-//       "Empty": 0,
-//       "Money": 5
-//     }
-//   ]
+//     "Result": 1,
+//     "Err": "ok",
+//     "Parks": [
+//         {
+//             "ParkName": "鄞州体育馆停车场",
+//             "ParkId": "3",
+//             "Longitude": 121.561854,
+//             "Latitude": 29.810474,
+//             "StoreyNum": 100,
+//             "EmptyNum": 50,
+//             "Money": 5
+//         },
+//         {
+//             "ParkName": "鄞州公园停车场",
+//             "ParkId": "6",
+//             "Longitude": 121.546649,
+//             "Latitude": 29.811662,
+//             "StoreyNum": 100,
+//             "EmptyNum": 50,
+//             "Money": 5
+//         },
+//         {
+//             "ParkName": "鄞州区政府停车场",
+//             "ParkId": "8",
+//             "Longitude": 121.546616,
+//             "Latitude": 29.817279,
+//             "StoreyNum": 100,
+//             "EmptyNum": 50,
+//             "Money": 5
+//         }
+//     ]
 // }
 // Result : 1. ok
 //          0. error
@@ -70,28 +79,37 @@ func (p *ParkController) SearchParkingLots() {
 // }
 // Return :
 // {
-//   "Result": 1,
-//   "Err": "ok",
-//   "Parks": [
-//     {
-//       "ParkName": "abcdd",
-//       "ParkId": "4",
-//       "Longitude": 100.01,
-//       "Latitude": 99.91,
-//       "Storey": 0,
-//       "Empty": 0,
-//       "Money": 5
-//     },
-//     {
-//       "ParkName": "abcddded",
-//       "ParkId": "5",
-//       "Longitude": 100.01,
-//       "Latitude": 99.91,
-//       "Storey": 0,
-//       "Empty": 0,
-//       "Money": 5
-//     }
-//   ]
+//     "Result": 1,
+//     "Err": "ok",
+//     "Parks": [
+//         {
+//             "ParkName": "鄞州体育馆停车场",
+//             "ParkId": "3",
+//             "Longitude": 121.561854,
+//             "Latitude": 29.810474,
+//             "StoreyNum": 100,
+//             "EmptyNum": 50,
+//             "Money": 5
+//         },
+//         {
+//             "ParkName": "鄞州公园停车场",
+//             "ParkId": "6",
+//             "Longitude": 121.546649,
+//             "Latitude": 29.811662,
+//             "StoreyNum": 100,
+//             "EmptyNum": 50,
+//             "Money": 5
+//         },
+//         {
+//             "ParkName": "鄞州区政府停车场",
+//             "ParkId": "8",
+//             "Longitude": 121.546616,
+//             "Latitude": 29.817279,
+//             "StoreyNum": 100,
+//             "EmptyNum": 50,
+//             "Money": 5
+//         }
+//     ]
 // }
 // Result : 1. ok
 //          0. error
