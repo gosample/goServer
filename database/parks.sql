@@ -11,6 +11,7 @@ CREATE TABLE parks(
   money DOUBLE,
   unit_price DOUBLE NOT NULL,
   book_uint_price DOUBLE NOT NULL,
+  park_pt POINT,
 
   PRIMARY KEY(park_id)
 ) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
