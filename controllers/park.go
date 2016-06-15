@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"encoding/json"
-	"fmt"
 	"parkinglots/models"
 
 	"github.com/astaxie/beego"
@@ -125,8 +124,6 @@ func (p *ParkController) NearByParkingLots() {
 	}
 	var m Message
 	json.Unmarshal(p.Ctx.Input.RequestBody, &m)
-
-	fmt.Println(m)
 
 	var results []models.Result
 	results, e := models.NearByParks(m.Longitude, m.Latitude)

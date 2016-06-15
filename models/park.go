@@ -1,10 +1,6 @@
 package models
 
-import (
-	"fmt"
-
-	"github.com/astaxie/beego/orm"
-)
+import "github.com/astaxie/beego/orm"
 
 func init() {
 	o = orm.NewOrm()
@@ -36,10 +32,7 @@ type Result struct {
 
 func QueryParks(parkName string) ([]Result, error) {
 	var results []Result
-	fmt.Println(parkName)
-	num, e := o.Raw("SELECT `park_name`,`park_id`,`longitude`,`latitude`,`storey_num`,`empty_num`,`money` FROM `parks` WHERE `park_name` LIKE ?", "%"+parkName+"%").QueryRows(&results)
-	fmt.Println(results)
-	fmt.Println(num, e)
+	_, e := o.Raw("SELECT `park_name`,`park_id`,`longitude`,`latitude`,`storey_num`,`empty_num`,`money` FROM `parks` WHERE `park_name` LIKE ?", "%"+parkName+"%").QueryRows(&results)
 	if e != nil {
 		return nil, e
 	}
@@ -48,11 +41,7 @@ func QueryParks(parkName string) ([]Result, error) {
 
 func NearByParks(longitude, latitude float64) ([]Result, error) {
 	var results []Result
-	fmt.Println(longitude)
-	fmt.Println(latitude)
-	num, e := o.Raw("SELECT `park_name`,`park_id`,`longitude`,`latitude`,`storey_num`,`empty_num`,`money` FROM `parking`.parks WHERE 0.02 >= ST_LENGTH(ST_LINESTRINGFROMWKB(LineString(`parking`.parks.park_pt, point(?,?))));", longitude, latitude).QueryRows(&results)
-	fmt.Println(results)
-	fmt.Println(num, e)
+	_, e := o.Raw("SELECT `park_name`,`park_id`,`longitude`,`latitude`,`storey_num`,`empty_num`,`money` FROM `parking`.parks WHERE 0.02 >= ST_LENGTH(ST_LINESTRINGFROMWKB(LineString(`parking`.parks.park_pt, point(?,?))));", longitude, latitude).QueryRows(&results)
 	if e != nil {
 		return nil, e
 	}
