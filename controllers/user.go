@@ -41,6 +41,7 @@ func (u *UserController) Register() {
 	json.Unmarshal(u.Ctx.Input.RequestBody, &m)
 
 	e := models.AddUser(models.User{UserAcount: m.UserAccount, UserPwd: m.UserPwd})
+	e = models.AddCar(models.Carofuser{UserAccount: m.UserAccount, CarLicense: m.CarLicense})
 	if e != nil {
 		u.Data["json"] = &models.RegisterResult{Result: 1, Err: e.Error()}
 	} else {
@@ -59,7 +60,9 @@ func (u *UserController) Register() {
 // Return:
 // {
 //     "Result": 0,
-//     "Err": "ok"
+//     "Err": "ok",
+//     "Token": "*********************"
+//     "CarLicenses": []
 // }
 
 // @Title login
@@ -74,12 +77,14 @@ func (u *UserController) Login() {
 	}
 	var m Message
 	json.Unmarshal(u.Ctx.Input.RequestBody, &m)
+	var results []models.CarResult
+	results, e := models.QueryCar(m.UserAccount)
 
 	token, e := models.UpdateUserToken(models.User{UserAcount: m.UserAccount, UserPwd: m.UserPwd})
 	if e != nil {
 		u.Data["json"] = &models.LoginResult{Result: 1, Err: e.Error()}
 	} else {
-		u.Data["json"] = &models.LoginResult{Result: 0, Err: "ok", Token: token}
+		u.Data["json"] = &models.LoginResult{Result: 0, Err: "ok", Token: token, CarLicenses: results}
 	}
 	u.ServeJSON()
 }

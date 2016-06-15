@@ -59,7 +59,7 @@ type ParkController struct {
 func (p *ParkController) SearchParkingLots() {
 	var n string
 	n = p.GetString("ParkName")
-	var results []models.Result
+	var results []models.ParkResult
 	results, e := models.QueryParks(n)
 	if e != nil {
 		p.Data["json"] = &models.SearchResult{Result: 0, Err: e.Error()}
@@ -125,7 +125,7 @@ func (p *ParkController) NearByParkingLots() {
 	var m Message
 	json.Unmarshal(p.Ctx.Input.RequestBody, &m)
 
-	var results []models.Result
+	var results []models.ParkResult
 	results, e := models.NearByParks(m.Longitude, m.Latitude)
 	if e != nil {
 		p.Data["json"] = &models.NearByResult{Result: 0, Err: e.Error()}

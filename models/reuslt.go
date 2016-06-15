@@ -7,17 +7,18 @@ type RegisterResult struct {
 }
 
 type LoginResult struct {
-	Result int
-	Err    string
-	Token  string
+	Result      int
+	Err         string
+	Token       string
+	CarLicenses []CarResult
 }
 type SearchResult struct {
 	Result int
 	Err    string
-	Parks  []Result
+	Parks  []ParkResult
 }
 type NearByResult struct {
 	Result int
 	Err    string
-	Parks  []Result
+	Parks  []ParkResult
 }

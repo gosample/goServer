@@ -20,7 +20,7 @@ type Parks struct {
 	BookUnitPrice float64
 }
 
-type Result struct {
+type ParkResult struct {
 	ParkName  string
 	ParkId    string
 	Longitude float64
@@ -30,20 +30,20 @@ type Result struct {
 	Money     int
 }
 
-func QueryParks(parkName string) ([]Result, error) {
-	var results []Result
-	_, e := o.Raw("SELECT `park_name`,`park_id`,`longitude`,`latitude`,`storey_num`,`empty_num`,`money` FROM `parks` WHERE `park_name` LIKE ?", "%"+parkName+"%").QueryRows(&results)
+func QueryParks(parkName string) ([]ParkResult, error) {
+	var parkResults []ParkResult
+	_, e := o.Raw("SELECT `park_name`,`park_id`,`longitude`,`latitude`,`storey_num`,`empty_num`,`money` FROM `parks` WHERE `park_name` LIKE ?", "%"+parkName+"%").QueryRows(&parkResults)
 	if e != nil {
 		return nil, e
 	}
-	return results, nil
+	return parkResults, nil
 }
 
-func NearByParks(longitude, latitude float64) ([]Result, error) {
-	var results []Result
-	_, e := o.Raw("SELECT `park_name`,`park_id`,`longitude`,`latitude`,`storey_num`,`empty_num`,`money` FROM `parking`.parks WHERE 0.02 >= ST_LENGTH(ST_LINESTRINGFROMWKB(LineString(`parking`.parks.park_pt, point(?,?))));", longitude, latitude).QueryRows(&results)
+func NearByParks(longitude, latitude float64) ([]ParkResult, error) {
+	var parkResults []ParkResult
+	_, e := o.Raw("SELECT `park_name`,`park_id`,`longitude`,`latitude`,`storey_num`,`empty_num`,`money` FROM `parking`.parks WHERE 0.02 >= ST_LENGTH(ST_LINESTRINGFROMWKB(LineString(`parking`.parks.park_pt, point(?,?))));", longitude, latitude).QueryRows(&parkResults)
 	if e != nil {
 		return nil, e
 	}
-	return results, nil
+	return parkResults, nil
 }
