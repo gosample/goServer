@@ -15,7 +15,7 @@ type UserController struct {
 // Method: POST
 // Body:
 // {
-//     "UserName": "18368493683",
+//     "UserAccount": "18368493683",
 //     "UserPwd": "12345678",
 //     "CarLicense": "浙A12345"
 // }
@@ -53,7 +53,7 @@ func (u *UserController) Register() {
 // Method: POST
 // Body:
 // {
-//     "UserName": "18368493683",
+//     "UserAccount": "18368493683",
 //     "UserPwd": "12345678"
 // }
 //
@@ -61,8 +61,12 @@ func (u *UserController) Register() {
 // {
 //     "Result": 0,
 //     "Err": "ok",
-//     "Token": "*********************"
-//     "CarLicenses": []
+//     "Token": "519851815345456028818368493683",
+//     "CarLicenses": [
+//         {
+//             "CarLicense": "浙A12345"
+//         }
+//     ]
 // }
 
 // @Title login
