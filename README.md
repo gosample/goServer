@@ -5,12 +5,13 @@ Function: Register
 URL: http://ip:8080/v1/user/register
 Method: POST
 Body:
+<code>
  {
      "UserAccount": "18368493683",
      "UserPwd": "12345678",
      "CarLicense": "浙A12345"
  }
-
+<code>
  Return:
  {
      "Result": 0,
@@ -22,11 +23,12 @@ Function: Login
 URL: http://ip:8080/v1/user/login
 Method: POST
  Body:
+<code>
  {
      "UserAccount": "18368493683",
      "UserPwd": "12345678"
  }
-
+<code>
  Return:
  {
      "Result": 0,
@@ -46,6 +48,7 @@ Method: GET
  Requst:
 http://ip:8080/v1/park/search?ParkName=name
  Return:
+<code>
  {
      "Result": 1,
      "Err": "ok",
@@ -85,11 +88,13 @@ Function: Show Nearby ParkingLots
 URL: http://ip:8080/park/nearby
 Method: POST
  Body:
+<code>
  {
      "Longitude": 121.571636,
      "Latitude": 29.816461
  }
  Return :
+<code>
  {
      "Result": 1,
      "Err": "ok",
