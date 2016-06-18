@@ -4,8 +4,11 @@
 Function: Register
   
 URL: http://ip:8080/v1/user/register
+  
 Method: POST
+  
 Body:
+  
 <pre><code>
  {
      "UserAccount": "18368493683",
@@ -15,6 +18,7 @@ Body:
  </code></pre>
 
  Return:
+   
 <pre><code>
  {
      "Result": 0,
@@ -25,9 +29,13 @@ Body:
 
 ---
 Function: Login
+  
 URL: http://ip:8080/v1/user/login
+  
 Method: POST
+  
 Body:
+  
 
 <pre><code>
  {
@@ -37,6 +45,7 @@ Body:
 </code></pre>
 
  Return:
+   
 <pre><code>
  {
      "Result": 0,
@@ -53,11 +62,17 @@ Body:
 
 ---
 Function: Search ParkingLots by name
+  
 URL: http://ip:8080/v1/park/search
+  
 Method: GET
- Requst:
+  
+Requst:
+   
 http://ip:8080/v1/park/search?ParkName=name
+  
  Return:
+   
 <pre><code>
  {
      "Result": 1,
@@ -97,9 +112,13 @@ http://ip:8080/v1/park/search?ParkName=name
 
 ---
 Function: Show Nearby ParkingLots
+  
 URL: http://ip:8080/park/nearby
+  
 Method: POST
+  
 Body:
+  
 
 <pre><code>
  {
@@ -108,7 +127,8 @@ Body:
  }
 </code></pre>
 
- Return :
+Return :
+   
 
 <pre><code>
  {
