@@ -2,6 +2,7 @@
 ---
 ### API
 Function: Register
+  
 URL: http://ip:8080/v1/user/register
 Method: POST
 Body:
