@@ -12,45 +12,6 @@ type ParkController struct {
 	beego.Controller
 }
 
-// Method : GET
-//
-// Return :
-// {
-//     "Result": 1,
-//     "Err": "ok",
-//     "Parks": [
-//         {
-//             "ParkName": "鄞州体育馆停车场",
-//             "ParkId": "3",
-//             "Longitude": 121.561854,
-//             "Latitude": 29.810474,
-//             "StoreyNum": 100,
-//             "EmptyNum": 50,
-//             "Money": 5
-//         },
-//         {
-//             "ParkName": "鄞州公园停车场",
-//             "ParkId": "6",
-//             "Longitude": 121.546649,
-//             "Latitude": 29.811662,
-//             "StoreyNum": 100,
-//             "EmptyNum": 50,
-//             "Money": 5
-//         },
-//         {
-//             "ParkName": "鄞州区政府停车场",
-//             "ParkId": "8",
-//             "Longitude": 121.546616,
-//             "Latitude": 29.817279,
-//             "StoreyNum": 100,
-//             "EmptyNum": 50,
-//             "Money": 5
-//         }
-//     ]
-// }
-// Result : 1. ok
-//          0. error
-
 // @Title search by name
 // @Description search parkinglots by parkName
 // @Success 200 {object} model.SearchResult
@@ -68,50 +29,6 @@ func (p *ParkController) SearchParkingLots() {
 	}
 	p.ServeJSON()
 }
-
-// Method : POST
-//
-// Body:
-// {
-//     "Longitude": 121.571636,
-//     "Latitude": 29.816461
-// }
-// Return :
-// {
-//     "Result": 1,
-//     "Err": "ok",
-//     "Parks": [
-//         {
-//             "ParkName": "鄞州体育馆停车场",
-//             "ParkId": "3",
-//             "Longitude": 121.561854,
-//             "Latitude": 29.810474,
-//             "StoreyNum": 100,
-//             "EmptyNum": 50,
-//             "Money": 5
-//         },
-//         {
-//             "ParkName": "鄞州公园停车场",
-//             "ParkId": "6",
-//             "Longitude": 121.546649,
-//             "Latitude": 29.811662,
-//             "StoreyNum": 100,
-//             "EmptyNum": 50,
-//             "Money": 5
-//         },
-//         {
-//             "ParkName": "鄞州区政府停车场",
-//             "ParkId": "8",
-//             "Longitude": 121.546616,
-//             "Latitude": 29.817279,
-//             "StoreyNum": 100,
-//             "EmptyNum": 50,
-//             "Money": 5
-//         }
-//     ]
-// }
-// Result : 1. ok
-//          0. error
 
 // @Title search by location
 // @Description near by parkinglots

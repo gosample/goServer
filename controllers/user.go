@@ -12,20 +12,6 @@ type UserController struct {
 	beego.Controller
 }
 
-// Method: POST
-// Body:
-// {
-//     "UserAccount": "18368493683",
-//     "UserPwd": "12345678",
-//     "CarLicense": "浙A12345"
-// }
-//
-// Return:
-// {
-//     "Result": 0,
-//     "Err": "ok"
-// }
-
 // @Title createUser
 // @Description create users
 // @Param	body		body 	models.User	true		"body for user content"
@@ -49,25 +35,6 @@ func (u *UserController) Register() {
 	}
 	u.ServeJSON()
 }
-
-// Method: POST
-// Body:
-// {
-//     "UserAccount": "18368493683",
-//     "UserPwd": "12345678"
-// }
-//
-// Return:
-// {
-//     "Result": 0,
-//     "Err": "ok",
-//     "Token": "519851815345456028818368493683",
-//     "CarLicenses": [
-//         {
-//             "CarLicense": "浙A12345"
-//         }
-//     ]
-// }
 
 // @Title login
 // @Description Logs user into the system
