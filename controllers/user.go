@@ -27,6 +27,7 @@ func (u *UserController) Register() {
 	json.Unmarshal(u.Ctx.Input.RequestBody, &m)
 
 	e := models.AddUser(models.User{UserAcount: m.UserAccount, UserPwd: m.UserPwd})
+	//TODO: check repeat CarLicense
 	_ = models.AddCar(models.Carofuser{UserAccount: m.UserAccount, CarLicense: m.CarLicense})
 	if e != nil {
 		u.Data["json"] = &models.RegisterResult{Result: 1, Err: e.Error()}
