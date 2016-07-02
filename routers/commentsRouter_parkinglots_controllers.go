@@ -6,6 +6,13 @@ import (
 
 func init() {
 
+	beego.GlobalControllerRouter["parkinglots/controllers:BookController"] = append(beego.GlobalControllerRouter["parkinglots/controllers:BookController"],
+		beego.ControllerComments{
+			"BookParkingLots",
+			`/book`,
+			[]string{"book"},
+			nil})
+
 	beego.GlobalControllerRouter["parkinglots/controllers:ObjectController"] = append(beego.GlobalControllerRouter["parkinglots/controllers:ObjectController"],
 		beego.ControllerComments{
 			"Post",
@@ -52,13 +59,6 @@ func init() {
 		beego.ControllerComments{
 			"NearByParkingLots",
 			`/nearby`,
-			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["parkinglots/controllers:BookController"] = append(beego.GlobalControllerRouter["parkinglots/controllers:BookController"],
-		beego.ControllerComments{
-			"BookParkingLots",
-			`/book`,
 			[]string{"post"},
 			nil})
 
