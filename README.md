@@ -2,13 +2,13 @@
 ---
 ### API
 Function: Register
-  
+
 URL: http://ip:8080/v1/user/register
-  
+
 Method: POST
-  
+
 Body:
-  
+
 <pre><code>
  {
      "UserAccount": "18368493683",
@@ -18,7 +18,7 @@ Body:
  </code></pre>
 
  Return:
-   
+
 <pre><code>
  {
      "Result": 0,
@@ -29,13 +29,13 @@ Body:
 
 ---
 Function: Login
-  
+
 URL: http://ip:8080/v1/user/login
-  
+
 Method: POST
-  
+
 Body:
-  
+
 
 <pre><code>
  {
@@ -45,7 +45,7 @@ Body:
 </code></pre>
 
  Return:
-   
+
 <pre><code>
  {
      "Result": 0,
@@ -62,17 +62,17 @@ Body:
 
 ---
 Function: Search ParkingLots by name
-  
+
 URL: http://ip:8080/v1/park/search
-  
+
 Method: GET
-  
+
 Requst:
-   
+
 http://ip:8080/v1/park/search?ParkName=name
-  
+
  Return:
-   
+
 <pre><code>
  {
      "Result": 1,
@@ -112,13 +112,13 @@ http://ip:8080/v1/park/search?ParkName=name
 
 ---
 Function: Show Nearby ParkingLots
-  
+
 URL: http://ip:8080/park/nearby
-  
+
 Method: POST
-  
+
 Body:
-  
+
 
 <pre><code>
  {
@@ -128,7 +128,7 @@ Body:
 </code></pre>
 
 Return :
-   
+
 
 <pre><code>
  {
@@ -166,3 +166,30 @@ Return :
  }
  </code></pre>
 
+ ---
+
+ Function: BookParkingLots
+
+ URL: http://ip:8080/v1/bookservices/book
+
+ Method: POST
+
+ Body:
+
+ <pre><code>
+  {
+      "UserAccount": "18368493683",
+      "CarLicense": "浙A12345",
+      "Hours": 2.5,
+      "ParkId": "1"
+  }
+  </code></pre>
+
+  Return:
+
+ <pre><code>
+  {
+      "Result": 0,
+      "Err": "ok"
+  }
+ </code></pre>
