@@ -22,3 +22,7 @@ type NearByResult struct {
 	Err    string
 	Parks  []ParkResult
 }
+type BookResult struct {
+	Result int
+	Err    string
+}

@@ -30,6 +30,11 @@ func init() {
 				&controllers.ParkController{},
 			),
 		),
+		beego.NSNamespace("/bookservices",
+			beego.NSInclude(
+				&controllers.BookController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }
