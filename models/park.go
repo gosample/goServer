@@ -1,6 +1,10 @@
 package models
 
-import "github.com/astaxie/beego/orm"
+import (
+	"fmt"
+
+	"github.com/astaxie/beego/orm"
+)
 
 func init() {
 	o = orm.NewOrm()
@@ -46,4 +50,25 @@ func NearByParks(longitude, latitude float64) ([]ParkResult, error) {
 		return nil, e
 	}
 	return parkResults, nil
+}
+
+func BookParkingLot(parkId string) error {
+
+	fmt.Println(parkId)
+
+	var emptyNum int
+	e := o.Raw("SELECT `empty_num` FROM `parks` WHERE `park_id` = ?;", parkId).QueryRow(&emptyNum)
+	if e != nil {
+		return e
+	}
+	fmt.Println(emptyNum)
+
+	if emptyNum <= 0 {
+		return fmt.Errorf("no empty parking space")
+	}
+	_, e = o.Raw("UPDATE `parks` SET `empty_num`= ? WHERE `park_id`= ?;", emptyNum-1, parkId).Exec()
+	if e != nil {
+		return e
+	}
+	return nil
 }

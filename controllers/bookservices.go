@@ -16,7 +16,7 @@ type BookController struct {
 // @Description book parkinglots
 // @Success 200 {object} model.BookResult
 // @Failure 403 parkionglots not empty
-// @router /book [book]
+// @router /book [post]
 func (b *BookController) BookParkingLots() {
 	type Message struct {
 		UserAccount, CarLicense, ParkId string
@@ -25,11 +25,16 @@ func (b *BookController) BookParkingLots() {
 	var m Message
 	json.Unmarshal(b.Ctx.Input.RequestBody, &m)
 
-	e := models.AddBookServices(models.Bookservices{UserAccount: m.UserAccount, CarLicense: m.CarLicense, Hours: m.Hours, ParkId: m.ParkId})
-	if e != nil {
-		b.Data["json"] = &models.BookResult{Result: 1, Err: e.Error()}
+	e1 := models.BookParkingLot(m.ParkId)
+	if e1 != nil {
+		b.Data["json"] = &models.BookResult{Result: 1, Err: e1.Error()}
 	} else {
-		b.Data["json"] = &models.BookResult{Result: 0, Err: "ok"}
+		e := models.AddBookServices(models.Bookservices{UserAccount: m.UserAccount, CarLicense: m.CarLicense, Hours: m.Hours, ParkId: m.ParkId})
+		if e != nil {
+			b.Data["json"] = &models.BookResult{Result: 1, Err: e.Error()}
+		} else {
+			b.Data["json"] = &models.BookResult{Result: 0, Err: "ok"}
+		}
 	}
 	//TODO:update empty_num in park table -1
 	b.ServeJSON()

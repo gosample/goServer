@@ -28,9 +28,9 @@ func (u *UserController) Register() {
 
 	e := models.AddUser(models.User{UserAcount: m.UserAccount, UserPwd: m.UserPwd})
 	//TODO: check repeat CarLicense
-	_ = models.AddCar(models.Carofuser{UserAccount: m.UserAccount, CarLicense: m.CarLicense})
+	e1 := models.AddCar(models.Carofuser{UserAccount: m.UserAccount, CarLicense: m.CarLicense})
 	if e != nil {
-		u.Data["json"] = &models.RegisterResult{Result: 1, Err: e.Error()}
+		u.Data["json"] = &models.RegisterResult{Result: 1, Err: e.Error() + e1.Error()}
 	} else {
 		u.Data["json"] = &models.RegisterResult{Result: 0, Err: "ok"}
 	}

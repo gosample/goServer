@@ -10,7 +10,7 @@ func init() {
 		beego.ControllerComments{
 			"BookParkingLots",
 			`/book`,
-			[]string{"book"},
+			[]string{"post"},
 			nil})
 
 	beego.GlobalControllerRouter["parkinglots/controllers:ObjectController"] = append(beego.GlobalControllerRouter["parkinglots/controllers:ObjectController"],
