@@ -26,3 +26,7 @@ type BookResult struct {
 	Result int
 	Err    string
 }
+type AddCarLicenseResult struct {
+	Result int
+	Err    string
+}

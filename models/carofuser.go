@@ -1,6 +1,10 @@
 package models
 
-import "github.com/astaxie/beego/orm"
+import (
+	"fmt"
+
+	"github.com/astaxie/beego/orm"
+)
 
 func init() {
 	o = orm.NewOrm()
@@ -12,6 +16,9 @@ type Carofuser struct {
 }
 type CarResult struct {
 	CarLicense string
+}
+type UserResult struct {
+	UserAccount string
 }
 
 func AddCar(c Carofuser) error {
@@ -29,4 +36,13 @@ func QueryCar(userAccount string) ([]CarResult, error) {
 		return nil, e
 	}
 	return carResults, nil
+}
+func QueryUser(carLicense string) error {
+	var userResults []UserResult
+	num, _ := o.Raw("SELECT `user_account` FROM `parking`.carofuser WHERE `car_license` = ?", carLicense).QueryRows(&userResults)
+	if num > 0 {
+		return fmt.Errorf("the carlicence is exist")
+	} else {
+		return nil
+	}
 }

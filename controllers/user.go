@@ -78,3 +78,23 @@ func (u *UserController) Hello() {
 	u.Data["json"] = "Hello from " + uid
 	u.ServeJSON()
 }
+
+// @Title AddCarLicense
+// @Description user to add more carlicense
+// @Success 200 {object} model.AddCarLicenseResult
+// @Failure 403 add carlicense fail
+// @router /addcarlicense [post]
+func (u *UserController) AddCarLicense() {
+	type Message struct {
+		UserAccount, CarLicense string
+	}
+	var m Message
+	json.Unmarshal(u.Ctx.Input.RequestBody, &m)
+	e := models.AddCar(models.Carofuser{UserAccount: m.UserAccount, CarLicense: m.CarLicense})
+	if e != nil {
+		u.Data["json"] = &models.AddCarLicenseResult{Result: 1, Err: e.Error()}
+	} else {
+		u.Data["json"] = &models.AddCarLicenseResult{Result: 1, Err: "ok"}
+	}
+	u.ServeJSON()
+}
