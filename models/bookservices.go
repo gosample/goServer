@@ -1,6 +1,10 @@
 package models
 
-import "github.com/astaxie/beego/orm"
+import (
+	"time"
+
+	"github.com/astaxie/beego/orm"
+)
 
 func init() {
 	o = orm.NewOrm()
@@ -14,9 +18,18 @@ type Bookservices struct {
 }
 
 func AddBookServices(b Bookservices) error {
-	_, e := o.Raw("INSERT INTO bookservices (user_account, car_license, hours, park_id) VALUES (?, ?, ?, ?);", b.UserAccount, b.CarLicense, b.Hours, b.ParkId).Exec()
+	_, e := o.Raw("INSERT INTO bookservices (user_account, car_license, hours, park_id, time_stamp) VALUES (?, ?, ?, ?, ?);", b.UserAccount, b.CarLicense, b.Hours, b.ParkId, time.Now()).Exec()
 	if e != nil {
 		return e
 	}
 	return nil
+}
+func FreeOutTimeSpace() (int64, error) {
+	res, e := o.Raw("DELETE FROM bookservices WHERE UNIX_TIMESTAMP(time_stamp) <= UNIX_TIMESTAMP()- hours*3600").Exec()
+	if e != nil {
+		return 0, e
+	} else {
+		num, _ := res.RowsAffected()
+		return num, nil
+	}
 }

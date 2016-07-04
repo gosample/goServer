@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"parkinglots/models"
 
 	"github.com/astaxie/beego"
@@ -21,6 +22,11 @@ func (p *ParkController) SearchParkingLots() {
 	var n string
 	n = p.GetString("ParkName")
 	var results []models.ParkResult
+	num, e1 := models.FreeOutTimeSpace()
+	if e1 == nil {
+		fmt.Println(num)
+		// TODO: recover the empty space +1
+	}
 	results, e := models.QueryParks(n)
 	if e != nil {
 		p.Data["json"] = &models.SearchResult{Result: 0, Err: e.Error()}
@@ -42,6 +48,12 @@ func (p *ParkController) NearByParkingLots() {
 	var m Message
 	json.Unmarshal(p.Ctx.Input.RequestBody, &m)
 
+	num, e1 := models.FreeOutTimeSpace()
+	if e1 == nil {
+		fmt.Println(num)
+		// TODO: recover the empty space +1
+	}
+
 	var results []models.ParkResult
 	results, e := models.NearByParks(m.Longitude, m.Latitude)
 	if e != nil {
@@ -49,5 +61,6 @@ func (p *ParkController) NearByParkingLots() {
 	} else {
 		p.Data["json"] = &models.NearByResult{Result: 1, Err: "ok", Parks: results}
 	}
+	// TODO: free the out of time parking space
 	p.ServeJSON()
 }

@@ -36,6 +36,5 @@ func (b *BookController) BookParkingLots() {
 			b.Data["json"] = &models.BookResult{Result: 0, Err: "ok"}
 		}
 	}
-	//TODO:update empty_num in park table -1
 	b.ServeJSON()
 }
