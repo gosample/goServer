@@ -30,3 +30,11 @@ type AddCarLicenseResult struct {
 	Result int
 	Err    string
 }
+type GetParkInfoResult struct {
+	Result    int
+	Err       string
+	StoreyNum int
+	EmptyNum  int
+	Money     float64
+	ParkImg   string
+}

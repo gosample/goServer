@@ -22,6 +22,7 @@ type Parks struct {
 	Money         float64
 	UnitPrice     float64
 	BookUnitPrice float64
+	ParkImg       string
 }
 
 type ParkResult struct {
@@ -31,12 +32,13 @@ type ParkResult struct {
 	Latitude  float64
 	StoreyNum int
 	EmptyNum  int
-	Money     int
+	Money     float64
+	ParkImg   string
 }
 
 func QueryParks(parkName string) ([]ParkResult, error) {
 	var parkResults []ParkResult
-	_, e := o.Raw("SELECT `park_name`,`park_id`,`longitude`,`latitude`,`storey_num`,`empty_num`,`money` FROM `parks` WHERE `park_name` LIKE ?", "%"+parkName+"%").QueryRows(&parkResults)
+	_, e := o.Raw("SELECT `park_name`,`park_id`,`longitude`,`latitude`,`storey_num`,`empty_num`,`money`,`park_img` FROM `parks` WHERE `park_name` LIKE ?", "%"+parkName+"%").QueryRows(&parkResults)
 	if e != nil {
 		return nil, e
 	}
@@ -45,7 +47,7 @@ func QueryParks(parkName string) ([]ParkResult, error) {
 
 func NearByParks(longitude, latitude float64) ([]ParkResult, error) {
 	var parkResults []ParkResult
-	_, e := o.Raw("SELECT `park_name`,`park_id`,`longitude`,`latitude`,`storey_num`,`empty_num`,`money` FROM `parking`.parks WHERE 0.02 >= ST_LENGTH(ST_LINESTRINGFROMWKB(LineString(`parking`.parks.park_pt, point(?,?))));", longitude, latitude).QueryRows(&parkResults)
+	_, e := o.Raw("SELECT `park_name`,`park_id`,`longitude`,`latitude`,`storey_num`,`empty_num`,`money`,`park_img` FROM `parking`.parks WHERE 0.02 >= ST_LENGTH(ST_LINESTRINGFROMWKB(LineString(`parking`.parks.park_pt, point(?,?))));", longitude, latitude).QueryRows(&parkResults)
 	if e != nil {
 		return nil, e
 	}
@@ -66,9 +68,14 @@ func BookParkingLot(parkId string) error {
 	if emptyNum <= 0 {
 		return fmt.Errorf("no empty parking space")
 	}
-	_, e = o.Raw("UPDATE `parks` SET `empty_num`= ? WHERE `park_id`= ?;", emptyNum-1, parkId).Exec()
-	if e != nil {
-		return e
-	}
 	return nil
+}
+
+func GetInfoById(parkId string) (ParkResult, error) {
+	var parkResult ParkResult
+	e := o.Raw("SELECT `park_name`,`park_id`,`longitude`,`latitude`,`storey_num`,`empty_num`,`money`,`park_img` FROM `parking`.parks WHERE `park_id` = ?;", parkId).QueryRow(&parkResult)
+	if e != nil {
+		return parkResult, e
+	}
+	return parkResult, nil
 }

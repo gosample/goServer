@@ -25,16 +25,11 @@ func (b *BookController) BookParkingLots() {
 	var m Message
 	json.Unmarshal(b.Ctx.Input.RequestBody, &m)
 
-	e1 := models.BookParkingLot(m.ParkId)
-	if e1 != nil {
-		b.Data["json"] = &models.BookResult{Result: 1, Err: e1.Error()}
+	e := models.AddBookServices(models.Bookservices{UserAccount: m.UserAccount, CarLicense: m.CarLicense, Hours: m.Hours, ParkId: m.ParkId})
+	if e != nil {
+		b.Data["json"] = &models.BookResult{Result: 1, Err: e.Error()}
 	} else {
-		e := models.AddBookServices(models.Bookservices{UserAccount: m.UserAccount, CarLicense: m.CarLicense, Hours: m.Hours, ParkId: m.ParkId})
-		if e != nil {
-			b.Data["json"] = &models.BookResult{Result: 1, Err: e.Error()}
-		} else {
-			b.Data["json"] = &models.BookResult{Result: 0, Err: "ok"}
-		}
+		b.Data["json"] = &models.BookResult{Result: 0, Err: "ok"}
 	}
 	b.ServeJSON()
 }

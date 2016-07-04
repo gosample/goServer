@@ -25,7 +25,6 @@ func (p *ParkController) SearchParkingLots() {
 	num, e1 := models.FreeOutTimeSpace()
 	if e1 == nil {
 		fmt.Println(num)
-		// TODO: recover the empty space +1
 	}
 	results, e := models.QueryParks(n)
 	if e != nil {
@@ -51,7 +50,6 @@ func (p *ParkController) NearByParkingLots() {
 	num, e1 := models.FreeOutTimeSpace()
 	if e1 == nil {
 		fmt.Println(num)
-		// TODO: recover the empty space +1
 	}
 
 	var results []models.ParkResult
@@ -61,6 +59,23 @@ func (p *ParkController) NearByParkingLots() {
 	} else {
 		p.Data["json"] = &models.NearByResult{Result: 1, Err: "ok", Parks: results}
 	}
-	// TODO: free the out of time parking space
+	p.ServeJSON()
+}
+
+// @Title get info
+// @Description get the parkinglot info
+// @Success 200 {object} model.GetParkInfoResult
+// @Failure 403 info not found
+// @router /info [get]
+func (p *ParkController) GetParkingLotsInfo() {
+	var n string
+	n = p.GetString("ParkId")
+	info, e := models.GetInfoById(n)
+	fmt.Println(info)
+	if e != nil {
+		p.Data["json"] = &models.GetParkInfoResult{Result: 0, Err: e.Error()}
+	} else {
+		p.Data["json"] = &models.GetParkInfoResult{Result: 1, Err: "ok", StoreyNum: info.StoreyNum, EmptyNum: info.EmptyNum, Money: info.Money, ParkImg: info.ParkImg}
+	}
 	p.ServeJSON()
 }
