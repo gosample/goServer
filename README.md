@@ -85,7 +85,8 @@ http://ip:8080/v1/park/search?ParkName=name
              "Latitude": 29.810474,
              "StoreyNum": 100,
              "EmptyNum": 50,
-             "Money": 5
+             "Money": 5,
+             "ParkImg": "http://upload.admin5.com/2015/0728/1438073690416.jpg
          },
          {
              "ParkName": "鄞州公园停车场",
@@ -94,7 +95,8 @@ http://ip:8080/v1/park/search?ParkName=name
              "Latitude": 29.811662,
              "StoreyNum": 100,
              "EmptyNum": 50,
-             "Money": 5
+             "Money": 5,
+             "ParkImg": "http://upload.admin5.com/2015/0728/1438073690416.jpg
          },
          {
              "ParkName": "鄞州区政府停车场",
@@ -103,7 +105,8 @@ http://ip:8080/v1/park/search?ParkName=name
              "Latitude": 29.817279,
              "StoreyNum": 100,
              "EmptyNum": 50,
-             "Money": 5
+             "Money": 5,
+             "ParkImg": "http://upload.admin5.com/2015/0728/1438073690416.jpg
          }
      ]
  }
@@ -142,7 +145,8 @@ Return :
              "Latitude": 29.810474,
              "StoreyNum": 100,
              "EmptyNum": 50,
-             "Money": 5
+             "Money": 5,
+             "ParkImg": "http://upload.admin5.com/2015/0728/1438073690416.jpg
          },
          {
              "ParkName": "鄞州公园停车场",
@@ -151,7 +155,8 @@ Return :
              "Latitude": 29.811662,
              "StoreyNum": 100,
              "EmptyNum": 50,
-             "Money": 5
+             "Money": 5,
+             "ParkImg": "http://upload.admin5.com/2015/0728/1438073690416.jpg
          },
          {
              "ParkName": "鄞州区政府停车场",
@@ -160,7 +165,8 @@ Return :
              "Latitude": 29.817279,
              "StoreyNum": 100,
              "EmptyNum": 50,
-             "Money": 5
+             "Money": 5,
+             "ParkImg": "http://upload.admin5.com/2015/0728/1438073690416.jpg
          }
      ]
  }
@@ -192,4 +198,29 @@ Return :
       "Result": 0,
       "Err": "ok"
   }
+ </code></pre>
+
+ ---
+
+ Function: GetParkInfoByParkId
+
+ URL: http://ip:8080/v1/info
+
+ Method: GET
+
+ Requst:
+
+ http://ip:8080/v1/info?ParkId=2
+
+  Return:
+
+ <pre><code>
+ {
+     "Result": 1,
+     "Err": "ok",
+     "StoreyNum": 100,
+     "EmptyNum": 100,
+     "Money": 5,
+     "ParkImg": "http://upload.admin5.com/2015/0728/1438073690416.jpg"
+}
  </code></pre>
