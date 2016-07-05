@@ -224,3 +224,29 @@ Return :
      "ParkImg": "http://upload.admin5.com/2015/0728/1438073690416.jpg"
 }
  </code></pre>
+
+ ---
+Function: AddCarlicense
+
+URL: http://ip:8080/v1/user/addcarlicense
+
+Method: POST
+
+Body:
+
+
+<pre><code>
+ {
+     "UserAccount": "18368493683",
+     "CarLicense": "浙B2233"
+ }
+</code></pre>
+
+ Return:
+
+<pre><code>
+ {
+     "Result": 1,
+     "Err": "ok"
+ }
+</code></pre>

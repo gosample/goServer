@@ -15,3 +15,5 @@ CREATE TABLE parks(
 
   PRIMARY KEY(park_id)
 ) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+# INSERT INTO `parking`.parks VALUES ("9","浙江医药","qwerty",100,100,121.560883,29.821188,"10.80.136.52",5,5,5,ST_GEOMFROMTEXT('POINT(121.560883 29.821188)'),"http://upload.admin5.com/2015/0728/1438073690416.jpg")
