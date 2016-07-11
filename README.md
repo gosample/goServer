@@ -204,13 +204,13 @@ Return :
 
  Function: GetParkInfoByParkId
 
- URL: http://ip:8080/v1/info
+ URL: http://ip:8080/v1/park/info
 
  Method: GET
 
  Requst:
 
- http://ip:8080/v1/info?ParkId=2
+ http://ip:8080/v1/park/info?ParkId=2
 
   Return:
 
