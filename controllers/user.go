@@ -94,7 +94,7 @@ func (u *UserController) AddCarLicense() {
 	if e != nil {
 		u.Data["json"] = &models.AddCarLicenseResult{Result: 1, Err: e.Error()}
 	} else {
-		u.Data["json"] = &models.AddCarLicenseResult{Result: 1, Err: "ok"}
+		u.Data["json"] = &models.AddCarLicenseResult{Result: 0, Err: "ok"}
 	}
 	u.ServeJSON()
 }
