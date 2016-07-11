@@ -24,12 +24,12 @@ func AddBookServices(b Bookservices) error {
 	}
 	return nil
 }
-func FreeOutTimeSpace() (int64, error) {
-	res, e := o.Raw("DELETE FROM bookservices WHERE UNIX_TIMESTAMP(time_stamp) <= UNIX_TIMESTAMP()- hours*3600").Exec()
-	if e != nil {
-		return 0, e
-	} else {
-		num, _ := res.RowsAffected()
-		return num, nil
-	}
-}
+// func FreeOutTimeSpace() (int64, error) {
+// 	res, e := o.Raw("DELETE FROM bookservices WHERE UNIX_TIMESTAMP(time_stamp) <= UNIX_TIMESTAMP()- hours*3600").Exec()
+// 	if e != nil {
+// 		return 0, e
+// 	} else {
+// 		num, _ := res.RowsAffected()
+// 		return num, nil
+// 	}
+// }

@@ -22,10 +22,6 @@ func (p *ParkController) SearchParkingLots() {
 	var n string
 	n = p.GetString("ParkName")
 	var results []models.ParkResult
-	num, e1 := models.FreeOutTimeSpace()
-	if e1 == nil {
-		fmt.Println(num)
-	}
 	results, e := models.QueryParks(n)
 	if e != nil {
 		p.Data["json"] = &models.SearchResult{Result: 0, Err: e.Error()}
@@ -46,11 +42,6 @@ func (p *ParkController) NearByParkingLots() {
 	}
 	var m Message
 	json.Unmarshal(p.Ctx.Input.RequestBody, &m)
-
-	num, e1 := models.FreeOutTimeSpace()
-	if e1 == nil {
-		fmt.Println(num)
-	}
 
 	var results []models.ParkResult
 	results, e := models.NearByParks(m.Longitude, m.Latitude)

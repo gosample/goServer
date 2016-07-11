@@ -6,4 +6,4 @@ CREATE TABLE bookservices(
   time_stamp TIMESTAMP NOT NULL,
 
   PRIMARY KEY(user_account, car_license)
-) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;  
