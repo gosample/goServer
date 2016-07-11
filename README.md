@@ -75,7 +75,7 @@ http://ip:8080/v1/park/search?ParkName=name
 
 <pre><code>
  {
-     "Result": 1,
+     "Result": 0,
      "Err": "ok",
      "Parks": [
          {
@@ -135,7 +135,7 @@ Return :
 
 <pre><code>
  {
-     "Result": 1,
+     "Result": 0,
      "Err": "ok",
      "Parks": [
          {
@@ -216,7 +216,7 @@ Return :
 
  <pre><code>
  {
-     "Result": 1,
+     "Result": 0,
      "Err": "ok",
      "StoreyNum": 100,
      "EmptyNum": 100,
@@ -246,7 +246,7 @@ Body:
 
 <pre><code>
  {
-     "Result": 1,
+     "Result": 0,
      "Err": "ok"
  }
 </code></pre>

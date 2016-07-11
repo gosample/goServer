@@ -24,9 +24,9 @@ func (p *ParkController) SearchParkingLots() {
 	var results []models.ParkResult
 	results, e := models.QueryParks(n)
 	if e != nil {
-		p.Data["json"] = &models.SearchResult{Result: 0, Err: e.Error()}
+		p.Data["json"] = &models.SearchResult{Result: 1, Err: e.Error()}
 	} else {
-		p.Data["json"] = &models.SearchResult{Result: 1, Err: "ok", Parks: results}
+		p.Data["json"] = &models.SearchResult{Result: 0, Err: "ok", Parks: results}
 	}
 	p.ServeJSON()
 }
@@ -46,9 +46,9 @@ func (p *ParkController) NearByParkingLots() {
 	var results []models.ParkResult
 	results, e := models.NearByParks(m.Longitude, m.Latitude)
 	if e != nil {
-		p.Data["json"] = &models.NearByResult{Result: 0, Err: e.Error()}
+		p.Data["json"] = &models.NearByResult{Result: 1, Err: e.Error()}
 	} else {
-		p.Data["json"] = &models.NearByResult{Result: 1, Err: "ok", Parks: results}
+		p.Data["json"] = &models.NearByResult{Result: 0, Err: "ok", Parks: results}
 	}
 	p.ServeJSON()
 }
@@ -64,9 +64,9 @@ func (p *ParkController) GetParkingLotsInfo() {
 	info, e := models.GetInfoById(n)
 	fmt.Println(info)
 	if e != nil {
-		p.Data["json"] = &models.GetParkInfoResult{Result: 0, Err: e.Error()}
+		p.Data["json"] = &models.GetParkInfoResult{Result: 1, Err: e.Error()}
 	} else {
-		p.Data["json"] = &models.GetParkInfoResult{Result: 1, Err: "ok", StoreyNum: info.StoreyNum, EmptyNum: info.EmptyNum, Money: info.Money, ParkImg: info.ParkImg}
+		p.Data["json"] = &models.GetParkInfoResult{Result: 0, Err: "ok", StoreyNum: info.StoreyNum, EmptyNum: info.EmptyNum, Money: info.Money, ParkImg: info.ParkImg}
 	}
 	p.ServeJSON()
 }
