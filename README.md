@@ -250,3 +250,37 @@ Body:
      "Err": "ok"
  }
 </code></pre>
+
+---
+
+Function: GetHistoryService
+
+URL: http://ip:8080/v1/service/history
+
+Method: GET
+
+Requst:
+
+http://ip:8080/v1/service/history?UserAccount=18468403655
+
+ Return:
+
+<pre><code>
+{
+
+    "Result": 0,
+    "Err": "ok",
+    "Services": [
+        {
+            "UserAccount": "18468403655",
+            "CarLicense": "浙A42355",
+            "Hours": 0.01,
+            "ParkId": "1",
+            "StartTime": "2016-07-11T20:51:02+08:00",
+            "ExitTime": "0001-01-01T00:00:00Z",
+            "TotalMoney": 0
+        }
+    ]
+
+}
+</code></pre>

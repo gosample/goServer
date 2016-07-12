@@ -104,4 +104,11 @@ func init() {
 			[]string{"post"},
 			nil})
 
+	beego.GlobalControllerRouter["parkinglots/controllers:ServiceController"] = append(beego.GlobalControllerRouter["parkinglots/controllers:ServiceController"],
+		beego.ControllerComments{
+			"GetHistoryService",
+			`/history`,
+			[]string{"get"},
+			nil})
+
 }

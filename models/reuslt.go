@@ -38,3 +38,8 @@ type GetParkInfoResult struct {
 	Money     float64
 	ParkImg   string
 }
+type ServiceResult struct {
+	Result   int
+	Err      string
+	Services []Service
+}
