@@ -6,7 +6,7 @@ DELIMITER $$
 CREATE PROCEDURE del_bookservers()
 BEGIN
 
-  DELETE FROM bookservices WHERE UNIX_TIMESTAMP(time_stamp) <= UNIX_TIMESTAMP() - hours*3600;
+  DELETE FROM bookservices WHERE UNIX_TIMESTAMP(book_time) <= UNIX_TIMESTAMP() - hours*3600;
 END ;
 
  
