@@ -8,4 +8,4 @@ FOR EACH ROW update `parks` set empty_num = empty_num -1 where park_id = new.par
 
 
 CREATE TRIGGER `add_service` AFTER DELETE ON `bookservices`
-FOR EACH ROW insert into `service` values (old.`user_account`,old.`car_license`,old.`hours`,old.`park_id`,old.`time_stamp`);
+FOR EACH ROW insert into `service` values (old.`user_account`,old.`car_license`,old.`hours`,old.`park_id`,old.`book_time`);

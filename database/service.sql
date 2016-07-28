@@ -5,8 +5,8 @@ CREATE TABLE service(
   car_license VARCHAR(20) NOT NULL,
   hours DOUBLE NOT NULL,
   park_id VARCHAR(255) NOT NULL,
-  start_time TIMESTAMP NOT NULL,
-  exit_time TIMESTAMP NOT NULL,
+  start_time DATATIME NOT NULL,
+  exit_time DATATIME NOT NULL,
   total_money DOUBLE NOT NULL,
 
   PRIMARY KEY(service_id)
