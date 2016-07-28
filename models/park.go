@@ -14,8 +14,8 @@ type Parks struct {
 	ParkId        string
 	ParkName      string
 	ParkPwd       string
-	StoreyNum     int
-	EmptyNum      int
+	StoreyNum     int64
+	EmptyNum      int64
 	Longitude     float64
 	Latitude      float64
 	ParkIp        string
@@ -30,8 +30,8 @@ type ParkResult struct {
 	ParkId    string
 	Longitude float64
 	Latitude  float64
-	StoreyNum int
-	EmptyNum  int
+	StoreyNum int64
+	EmptyNum  int64
 	Money     float64
 	ParkImg   string
 }

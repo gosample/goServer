@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"strconv"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
@@ -18,14 +19,16 @@ func init() {
 }
 
 type User struct {
-	UserAcount string
-	UserPwd    string
-	Money      float64
-	Token      string
+	UserAcount    string
+	UserPwd       string
+	Money         float64
+	Token         string
+	CreatTime     time.Time
+	LastLoginTime time.Time
 }
 
 func AddUser(u User) error {
-	_, e := o.Raw("INSERT INTO users (user_account, user_pwd) VALUES (?, ?);", u.UserAcount, u.UserPwd).Exec()
+	_, e := o.Raw("INSERT INTO users (user_account, user_pwd, creat_time) VALUES (?, ?, ?);", u.UserAcount, u.UserPwd, time.Now()).Exec()
 	if e != nil {
 		return e
 	}
@@ -45,7 +48,7 @@ func UpdateUserToken(u User) (string, error) {
 
 	// TODO: add to token cache
 	token := strconv.Itoa(int(rand.Int63())) + u.UserAcount
-	_, e = o.Raw("UPDATE `users` SET `token`= ? WHERE `user_account`= ?;", token, u.UserAcount).Exec()
+	_, e = o.Raw("UPDATE `users` SET `token`= ?, `last_login_time`= ? WHERE `user_account`= ?;", token, time.Now(), u.UserAcount).Exec()
 	if e != nil {
 		return "", e
 	}

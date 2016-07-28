@@ -170,6 +170,7 @@ Return :
          }
      ]
  }
+
  </code></pre>
 
  ---
@@ -187,7 +188,8 @@ Return :
       "UserAccount": "18368493683",
       "CarLicense": "浙A12345",
       "Hours": 2.5,
-      "ParkId": "1"
+      "ParkId": "1",
+      "SpaceId": "1"
   }
   </code></pre>
 
@@ -282,5 +284,60 @@ http://ip:8080/v1/service/history?UserAccount=18468403655
         }
     ]
 
+}
+</code></pre>
+
+---
+
+
+Function: GetEmptySpace
+
+URL: http://ip:8080/v1/parkingspace/emptyspace
+
+Method: GET
+
+Requst:
+
+http://localhost:8080/v1/parkingspace/emptyspace?ParkId=1
+
+ Return:
+
+<pre><code>
+{
+    "Result": 0,
+    "Num": 5,
+    "Err": "ok",
+    "ParkSpaces": [
+        {
+            "SpaceId": "1",
+            "ParkId": "1",
+            "State": 0,
+            "Floor": 1
+        },
+        {
+            "SpaceId": "2",
+            "ParkId": "1",
+            "State": 0,
+            "Floor": 1
+        },
+        {
+            "SpaceId": "3",
+            "ParkId": "1",
+            "State": 0,
+            "Floor": 1
+        },
+        {
+            "SpaceId": "4",
+            "ParkId": "1",
+            "State": 0,
+            "Floor": 1
+        },
+        {
+            "SpaceId": "5",
+            "ParkId": "1",
+            "State": 0,
+            "Floor": 1
+        }
+    ]
 }
 </code></pre>

@@ -76,6 +76,13 @@ func init() {
 			[]string{"get"},
 			nil})
 
+	beego.GlobalControllerRouter["parkinglots/controllers:SpaceController"] = append(beego.GlobalControllerRouter["parkinglots/controllers:SpaceController"],
+		beego.ControllerComments{
+			"GetEmptySpace",
+			`/emptyspace`,
+			[]string{"get"},
+			nil})
+
 	beego.GlobalControllerRouter["parkinglots/controllers:UserController"] = append(beego.GlobalControllerRouter["parkinglots/controllers:UserController"],
 		beego.ControllerComments{
 			"Register",

@@ -40,6 +40,11 @@ func init() {
 				&controllers.ServiceController{},
 			),
 		),
+		beego.NSNamespace("/parkingspace",
+			beego.NSInclude(
+				&controllers.SpaceController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }

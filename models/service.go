@@ -15,6 +15,7 @@ type Service struct {
 	CarLicense  string
 	Hours       float64
 	ParkId      string
+	SpaceId     string
 	StartTime   time.Time
 	ExitTime    time.Time
 	TotalMoney  float64
@@ -22,7 +23,7 @@ type Service struct {
 
 func QueryService(userAccount string) ([]Service, error) {
 	var services []Service
-	_, e := o.Raw("SELECT `user_account`,`car_license`,`hours`,`park_id`,`start_time`,`exit_time`,`total_money` FROM `service` WHERE `user_account` = ?", userAccount).QueryRows(&services)
+	_, e := o.Raw("SELECT `user_account`,`car_license`,`hours`,`park_id`,`space_id`,`start_time`,`exit_time`,`total_money` FROM `service` WHERE `user_account` = ?", userAccount).QueryRows(&services)
 	if e != nil {
 		return nil, e
 	}
