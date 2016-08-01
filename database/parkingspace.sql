@@ -18,7 +18,6 @@ INTO
     `park_id`,
     `state`,
     `floor`,
-    `user_account`,
     `assign_time`
   )
-VALUES('1', '1', '0', '1', 'Linus', CURRENT_TIMESTAMP);
+VALUES('1', '1', '0', '1', CURRENT_TIMESTAMP);

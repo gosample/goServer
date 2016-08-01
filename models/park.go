@@ -23,6 +23,7 @@ type Parks struct {
 	UnitPrice     float64
 	BookUnitPrice float64
 	ParkImg       string
+	ParkAddress   string
 }
 
 type ParkResult struct {
